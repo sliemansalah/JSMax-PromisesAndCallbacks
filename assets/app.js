@@ -6,3 +6,11 @@ console.log('Clicked');
 }
 
 button.addEventListener('click', trackUserHandler);
+
+let result = 0;
+
+for(let i=0; i<1000000; i++) {
+    result +=i;
+}
+
+console.log(result);
