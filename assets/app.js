@@ -24,9 +24,16 @@ const setTimer = (duration) => {
 async function trackUserHandler() {
 // console.log('Clicked');
     // let positionData;
-    const posData= await getPosition();
-    const timerData= await setTimer(2000)
-    console.log(timerData, posData);
+    let posData;
+    let timerData;
+    try {
+         posData= await getPosition();
+         timerData= await setTimer(2000);
+        console.log(timerData, posData);
+    } catch (error) {
+        console.log(error);
+    }
+  
     
     //  .then(posData => {
     //     positionData=posData;
