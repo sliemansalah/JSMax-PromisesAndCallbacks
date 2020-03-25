@@ -22,44 +22,39 @@ const setTimer = (duration) => {
 }
 
 async function trackUserHandler() {
-// console.log('Clicked');
-    // let positionData;
-    let posData;
-    let timerData;
-    try {
-         posData= await getPosition();
-         timerData= await setTimer(2000);
-        console.log(timerData, posData);
-    } catch (error) {
-        console.log(error);
-    }
-  
-    
-    //  .then(posData => {
-    //     positionData=posData;
-    //    return setTimer(2000);
-    // })
-    // .catch(err => {
-    //     console.log(err);
-    //     console.log('on we go ..');
-    // })
-    // .then(data => {
-    //     console.log(data,positionData);
-    // })
-// setTimer(1000).then(()=>{
-//     console.log('Timer done');
-// })
-// console.log('Getting position ...');
+    // let posData;
+    // let timerData;
+    // try {
+    //      posData= await getPosition();
+    //      timerData= await setTimer(2000);
+    // console.log(timerData, posData);
+    // } catch (error) {
+    //     console.log(error);
+    // }
 };
+
 
 
 
 button.addEventListener('click', trackUserHandler);
 
-let result = 0;
+// Promise.race([getPosition()],setTimer(1000)).then(data => {
+//     console.log(data);
+// });
 
-for(let i=0; i<1000000; i++) {
-    result +=i;
-}
+// Promise.all([getPosition(),setTimer(1000)]).then(promiseData => {
+//     console.log(promiseData);
+// });
 
-// console.log(result);
+Promise.allSettled([getPosition(),setTimer(1000)]).then(promiseData => {
+    console.log(promiseData);
+});
+// getPosition();
+// setTimer(1000);
+
+
+// let result = 0;
+
+// for(let i=0; i<1000000; i++) {
+//     result +=i;
+// }
